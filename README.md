@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Monedas para Adivina el Número</title>
+    <title>Sistema de Monedas - Solución de Canje</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -13,16 +13,17 @@
             --warning: #f39c12;
             --dark: #2c3e50;
             --light: #ecf0f1;
+            --whatsapp: #25D366;
         }
         
-   * {
+  * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-   body {
+  body {
             background: linear-gradient(135deg, #1a2980, #26d0ce);
             min-height: 100vh;
             display: flex;
@@ -32,7 +33,7 @@
             color: #fff;
         }
         
-   .container {
+ .container {
             background: rgba(0, 0, 0, 0.85);
             border-radius: 20px;
             padding: 30px;
@@ -50,14 +51,14 @@
             z-index: 2;
         }
         
-   h1 {
+  h1 {
             font-size: 2.8rem;
             margin-bottom: 15px;
             color: #ffd700;
             text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
         }
         
-   .tabs {
+  .tabs {
             display: flex;
             justify-content: center;
             margin-bottom: 25px;
@@ -75,26 +76,26 @@
             margin: 0 5px;
         }
         
-   .tab.active {
+ .tab.active {
             background: var(--primary);
             color: white;
         }
         
-   .section {
+.section {
             display: none;
             animation: fadeIn 0.5s ease;
         }
         
-   .section.active {
+ .section.active {
             display: block;
         }
         
-  @keyframes fadeIn {
+ @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-   .card {
+ .card {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 25px;
@@ -102,7 +103,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-   .coins-section {
+.coins-section {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -113,7 +114,7 @@
             border: 2px solid #ffd700;
         }
         
-   .coins-display {
+.coins-display {
             font-size: 1.8rem;
             font-weight: bold;
             display: flex;
@@ -121,13 +122,13 @@
             margin-right: 25px;
         }
         
-   .coin-icon {
+.coin-icon {
             color: #ffd700;
             margin-right: 10px;
             font-size: 2rem;
         }
         
-   .btn {
+ .btn {
             background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
             border: none;
@@ -144,32 +145,36 @@
             margin: 10px;
         }
         
-   .btn i {
+ .btn i {
             margin-right: 8px;
         }
         
-   .btn:hover {
+ .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
         
-   .btn:active {
+ .btn:active {
             transform: translateY(1px);
         }
         
-   .btn-warning {
+ .btn-warning {
             background: linear-gradient(to right, var(--warning), #ff6b00);
         }
         
-   .btn-danger {
+.btn-danger {
             background: linear-gradient(to right, var(--danger), #c0392b);
         }
         
-   .input-group {
+ .btn-whatsapp {
+            background: var(--whatsapp);
+        }
+        
+ .input-group {
             margin: 20px 0;
         }
         
-   input, select {
+  input, select {
             padding: 15px 20px;
             font-size: 1.1rem;
             border: none;
@@ -183,7 +188,7 @@
             margin: 10px 0;
         }
         
-  .result-container {
+ .result-container {
             min-height: 100px;
             background: rgba(0, 0, 0, 0.4);
             border-radius: 15px;
@@ -193,7 +198,7 @@
             text-align: center;
         }
         
-  .result-text {
+ .result-text {
             font-size: 1.2rem;
             min-height: 60px;
             display: flex;
@@ -203,7 +208,7 @@
             word-break: break-all;
         }
         
-   .code-display {
+ .code-display {
             font-size: 1.4rem;
             font-weight: bold;
             background: rgba(0, 0, 0, 0.6);
@@ -215,7 +220,7 @@
             letter-spacing: 3px;
         }
         
-   .coin-package {
+  .coin-package {
             display: inline-block;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
@@ -227,29 +232,29 @@
             transition: all 0.3s ease;
         }
         
-   .coin-package:hover {
+.coin-package:hover {
             transform: scale(1.05);
             background: rgba(255, 255, 255, 0.15);
         }
         
-  .coin-package.selected {
+ .coin-package.selected {
             background: rgba(255, 193, 7, 0.2);
             border-color: #ffc107;
             box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
         }
         
-  .package-coins {
+ .package-coins {
             font-size: 2rem;
             color: #ffd700;
             margin: 10px 0;
         }
         
-  .package-price {
+ .package-price {
             font-size: 1.2rem;
             font-weight: bold;
         }
         
-   .instructions {
+.instructions {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 20px;
@@ -258,25 +263,25 @@
             font-size: 0.95rem;
         }
         
-   .instructions ol {
+ .instructions ol {
             padding-left: 20px;
             margin: 15px 0;
         }
         
-   .instructions li {
+ .instructions li {
             margin-bottom: 10px;
             line-height: 1.6;
         }
         
-   .success {
+.success {
             color: var(--secondary);
         }
         
-  .error {
+ .error {
             color: var(--danger);
         }
         
-  .game-controls {
+ .game-controls {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
@@ -284,17 +289,100 @@
             margin: 20px 0;
         }
         
-   .win-animation {
+ .win-animation {
             animation: win-celebration 2s infinite;
         }
         
-   @keyframes win-celebration {
+  @keyframes win-celebration {
             0% { text-shadow: 0 0 10px #ff0, 0 0 20px #ff0; }
             50% { text-shadow: 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ff0; }
             100% { text-shadow: 0 0 10px #ff0, 0 0 20px #ff0; }
         }
         
-   @media (max-width: 600px) {
+ .whatsapp-info {
+            background: rgba(37, 211, 102, 0.1);
+            border: 2px solid var(--whatsapp);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+ .whatsapp-info h3 {
+            color: var(--whatsapp);
+            margin-bottom: 10px;
+        }
+        
+ .whatsapp-btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+ .admin-codes-list {
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        
+ .code-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+ .code-item:last-child {
+            border-bottom: none;
+        }
+        
+ .code-value {
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+ .code-status {
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+ .status-pending {
+            background: rgba(243, 156, 18, 0.2);
+            color: var(--warning);
+        }
+        
+.status-paid {
+            background: rgba(46, 204, 113, 0.2);
+            color: var(--secondary);
+        }
+        
+ .status-rejected {
+            background: rgba(231, 76, 60, 0.2);
+            color: var(--danger);
+        }
+        
+ .status-used {
+            background: rgba(155, 89, 182, 0.2);
+            color: #9b59b6;
+        }
+        
+ .select-code-btn {
+            background: rgba(52, 152, 219, 0.3);
+            border: none;
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+ @media (max-width: 600px) {
             .container {
                 padding: 20px;
             }
@@ -303,19 +391,24 @@
                 font-size: 2.2rem;
             }
             
-   .tabs {
+ .tabs {
                 flex-direction: column;
                 border-radius: 15px;
             }
             
-   .tab {
+  .tab {
                 margin: 5px 0;
                 border-radius: 15px;
             }
             
-  .coin-package {
+ .coin-package {
                 width: 130px;
                 margin: 10px;
+            }
+            
+.whatsapp-btn-container {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -335,12 +428,12 @@
         </div>
         
         <!-- Sección de Compra de Monedas -->
-  <div class="section active" id="buy-section">
+ <div class="section active" id="buy-section">
             <div class="card">
                 <h2><i class="fas fa-shopping-cart"></i> Comprar Monedas</h2>
                 <p>Cada moneda cuesta 1 S/ y te permite un intento en el juego</p>
                 
-   <div class="input-group">
+ <div class="input-group">
                     <h3>Selecciona un paquete:</h3>
                     <div class="packages">
                         <div class="coin-package" data-coins="5" data-price="5">
@@ -358,11 +451,17 @@
                     </div>
                 </div>
                 
+ <div class="whatsapp-info">
+                    <h3><i class="fab fa-whatsapp"></i> Soporte por WhatsApp</h3>
+                    <p>Para cualquier duda o problema, contáctame directamente:</p>
+                    <p><strong>WhatsApp: 975 842 622</strong></p>
+                </div>
+                
   <button class="btn btn-warning" id="generate-code-btn">
                     <i class="fas fa-qrcode"></i> Generar Código de Pago
                 </button>
                 
-  <div class="result-container">
+ <div class="result-container">
                     <div class="result-text" id="buy-result">
                         Selecciona un paquete de monedas para continuar
                     </div>
@@ -371,20 +470,20 @@
         </div>
         
         <!-- Sección de Canje de Código -->
-   <div class="section" id="redeem-section">
+ <div class="section" id="redeem-section">
             <div class="card">
                 <h2><i class="fas fa-ticket-alt"></i> Canjear Código</h2>
                 <p>Ingresa el código de verificación que recibiste</p>
                 
-   <div class="input-group">
+ <div class="input-group">
                     <input type="text" id="redeem-code" placeholder="Ingresa tu código aquí">
                 </div>
                 
-   <button class="btn" id="redeem-btn">
+ <button class="btn" id="redeem-btn">
                     <i class="fas fa-gift"></i> Canjear Monedas
                 </button>
                 
-  <div class="result-container">
+<div class="result-container">
                     <div class="result-text" id="redeem-result">
                         El código válido agregará monedas a tu cuenta
                     </div>
@@ -393,23 +492,23 @@
         </div>
         
         <!-- Sección del Juego -->
-   <div class="section" id="play-section">
+ <div class="section" id="play-section">
             <div class="card">
                 <h2><i class="fas fa-gamepad"></i> Adivina el Número</h2>
                 
-   <div class="coins-section">
+ <div class="coins-section">
                     <div class="coins-display">
                         <span class="coin-icon"><i class="fas fa-coins"></i></span>
                         <span id="coins-count">0</span>
                     </div>
                 </div>
                 
-  <div class="input-group">
+ <div class="input-group">
                     <p>Adivina un número entre 1 y 100:</p>
                     <input type="number" id="guess-input" min="1" max="100" placeholder="1-100">
                 </div>
                 
-   <div class="game-controls">
+<div class="game-controls">
                     <button class="btn" id="guess-btn">
                         <i class="fas fa-dice"></i> Adivinar (1 moneda)
                     </button>
@@ -418,7 +517,7 @@
                     </button>
                 </div>
                 
-  <div class="result-container">
+ <div class="result-container">
                     <div class="result-text" id="game-result">
                         ¡Usa tus monedas para empezar a jugar!
                     </div>
@@ -427,22 +526,23 @@
         </div>
         
         <!-- Sección de Verificación (para administrador) -->
-   <div class="section" id="verify-section">
+<div class="section" id="verify-section">
             <div class="card">
                 <h2><i class="fas fa-user-shield"></i> Verificación de Pagos</h2>
                 <p>Panel de administrador para verificar códigos generados</p>
                 
-   <div class="instructions">
+<div class="instructions">
                     <h3>Instrucciones:</h3>
                     <ol>
                         <li>Cuando un cliente compra monedas, se genera un código único</li>
-                        <li>El sistema envía automáticamente un WhatsApp al administrador con el código y los detalles</li>
+                        <li>El sistema guarda automáticamente el código en la base de datos local</li>
                         <li>Verifica que el pago se haya realizado correctamente</li>
+                        <li>Actualiza el estado del código a "Pagado"</li>
                         <li>Cuando el cliente canjea el código, el sistema verifica que esté marcado como pagado</li>
                     </ol>
                 </div>
                 
-  <div class="input-group">
+ <div class="input-group">
                     <input type="text" id="admin-code" placeholder="Código a verificar">
                     <select id="payment-status">
                         <option value="pending">Pendiente</option>
@@ -451,11 +551,15 @@
                     </select>
                 </div>
                 
-   <button class="btn" id="verify-btn">
+ <button class="btn" id="verify-btn">
                     <i class="fas fa-check-circle"></i> Actualizar Estado
                 </button>
                 
-  <div class="result-container">
+ <div class="admin-codes-list" id="codes-list">
+                    <!-- Aquí se mostrarán los códigos existentes -->
+                </div>
+                
+ <div class="result-container">
                     <div class="result-text" id="verify-result">
                         Aquí se mostrarán los códigos generados y su estado
                     </div>
@@ -464,7 +568,7 @@
         </div>
     </div>
 
-   <script>
+<script>
         document.addEventListener('DOMContentLoaded', () => {
             // Variables globales
             let coins = 0;
@@ -472,7 +576,7 @@
             let attempts = 0;
             let selectedPackage = null;
             let generatedCodes = {};
-            const adminPhone = "+51987654321"; // Tu número de WhatsApp
+            const adminPhone = "51975842622"; // Tu número de WhatsApp en formato internacional
             
             // Elementos del DOM
             const coinsCount = document.getElementById('coins-count');
@@ -483,10 +587,12 @@
             const redeemResult = document.getElementById('redeem-result');
             const gameResult = document.getElementById('game-result');
             const verifyResult = document.getElementById('verify-result');
+            const codesList = document.getElementById('codes-list');
             
             // Inicialización
             loadCoins();
             loadGeneratedCodes();
+            renderCodesList();
             
             // Navegación por pestañas
             tabs.forEach(tab => {
@@ -496,6 +602,11 @@
                     
                     tab.classList.add('active');
                     document.getElementById(`${tab.dataset.tab}-section`).classList.add('active');
+                    
+                    // Actualizar lista al entrar a verificación
+                    if (tab.dataset.tab === 'verify') {
+                        renderCodesList();
+                    }
                 });
             });
             
@@ -532,20 +643,44 @@
                     timestamp: new Date().toISOString()
                 };
                 
-                // Mostrar código al usuario
+                // Crear mensaje para WhatsApp
+                const whatsappMessage = `Hola, acabo de generar el código ${code} para comprar ${selectedPackage.coins} monedas. Adjunto mi comprobante de pago.`;
+                const whatsappUrl = `https://wa.me/${adminPhone}?text=${encodeURIComponent(whatsappMessage)}`;
+                
+                // Mostrar código al usuario con botón de WhatsApp
                 buyResult.innerHTML = `
                     <div class="success">¡Código generado con éxito!</div>
                     <div class="code-display">${code}</div>
-                    <p>Envía ${selectedPackage.price} S/ a la cuenta bancaria y luego envía el comprobante con este código a WhatsApp: ${adminPhone}</p>
+                    <p>Envía ${selectedPackage.price} S/ a la cuenta bancaria y luego envía el comprobante con este código a WhatsApp.</p>
+                    
+                    <div class="whatsapp-btn-container">
+                        <a href="${whatsappUrl}" target="_blank" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                        </a>
+                        <button class="btn" id="copy-code-btn">
+                            <i class="fas fa-copy"></i> Copiar Código
+                        </button>
+                    </div>
+                    
                     <p>Una vez verificado el pago, podrás canjear este código para obtener tus monedas</p>
                 `;
                 buyResult.className = "result-text";
                 
-                // Simular envío de WhatsApp al administrador
-                sendWhatsAppToAdmin(code, selectedPackage);
+                // Agregar evento para copiar el código
+                document.getElementById('copy-code-btn').addEventListener('click', () => {
+                    navigator.clipboard.writeText(code);
+                    const copyBtn = document.getElementById('copy-code-btn');
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
+                    copyBtn.style.background = 'var(--secondary)';
+                    setTimeout(() => {
+                        copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar Código';
+                        copyBtn.style.background = '';
+                    }, 2000);
+                });
                 
                 // Guardar en localStorage
                 saveGeneratedCodes();
+                renderCodesList();
                 
                 // Limpiar selección
                 packages.forEach(p => p.classList.remove('selected'));
@@ -596,6 +731,7 @@
                 // Eliminar código (marcar como usado)
                 generatedCodes[code].status = "used";
                 saveGeneratedCodes();
+                renderCodesList();
                 
                 // Actualizar contador
                 coinsCount.textContent = coins;
@@ -688,6 +824,7 @@
                 // Actualizar estado
                 generatedCodes[code].status = status;
                 saveGeneratedCodes();
+                renderCodesList();
                 
                 verifyResult.innerHTML = `
                     <div class="success">Estado actualizado correctamente</div>
@@ -713,26 +850,6 @@
                 } while (generatedCodes[code]); // Asegurar que no exista
                 
                 return code;
-            }
-            
-            // Simular envío de WhatsApp al administrador
-            function sendWhatsAppToAdmin(code, packageInfo) {
-                const message = `NUEVA COMPRA DE MONEDAS\n\n` +
-                               `Código: ${code}\n` +
-                               `Monedas: ${packageInfo.coins}\n` +
-                               `Monto: ${packageInfo.price} S/\n` +
-                               `Fecha: ${new Date().toLocaleString()}\n\n` +
-                               `Por favor verificar el pago y actualizar el estado en el sistema.`;
-                
-                // En un sistema real, aquí se enviaría el mensaje por API
-                console.log(`WhatsApp enviado a ${adminPhone}: ${message}`);
-                
-                // Mostrar en el panel de verificación para simulación
-                verifyResult.innerHTML = `
-                    <div class="success">Nuevo WhatsApp recibido:</div>
-                    <p>${message.replace(/\n/g, '<br>')}</p>
-                `;
-                verifyResult.className = "result-text";
             }
             
             // Obtener texto del estado
@@ -767,8 +884,58 @@
             function loadGeneratedCodes() {
                 const savedCodes = localStorage.getItem('generatedCodes');
                 if (savedCodes) {
-                    generatedCodes = JSON.parse(savedCodes);
+                    try {
+                        generatedCodes = JSON.parse(savedCodes);
+                    } catch (e) {
+                        console.error("Error parsing generatedCodes:", e);
+                        generatedCodes = {};
+                    }
+                } else {
+                    generatedCodes = {};
                 }
+            }
+            
+            // Renderizar lista de códigos en el panel de administración
+            function renderCodesList() {
+                codesList.innerHTML = '';
+                
+                if (Object.keys(generatedCodes).length === 0) {
+                    codesList.innerHTML = '<p>No hay códigos generados</p>';
+                    return;
+                }
+                
+                const title = document.createElement('h3');
+                title.textContent = 'Códigos Generados:';
+                title.style.marginBottom = '10px';
+                title.style.textAlign = 'center';
+                codesList.appendChild(title);
+                
+                Object.entries(generatedCodes).forEach(([code, details]) => {
+                    const item = document.createElement('div');
+                    item.className = 'code-item';
+                    
+                    const codeSpan = document.createElement('span');
+                    codeSpan.className = 'code-value';
+                    codeSpan.textContent = code;
+                    
+                    const statusSpan = document.createElement('span');
+                    statusSpan.className = `code-status status-${details.status}`;
+                    statusSpan.textContent = getStatusText(details.status).replace(/<\/?span[^>]*>/g, '');
+                    
+                    const selectBtn = document.createElement('button');
+                    selectBtn.className = 'select-code-btn';
+                    selectBtn.innerHTML = '<i class="fas fa-arrow-right"></i> Seleccionar';
+                    selectBtn.addEventListener('click', () => {
+                        document.getElementById('admin-code').value = code;
+                        document.getElementById('payment-status').value = details.status;
+                    });
+                    
+                    item.appendChild(codeSpan);
+                    item.appendChild(statusSpan);
+                    item.appendChild(selectBtn);
+                    
+                    codesList.appendChild(item);
+                });
             }
         });
     </script>
